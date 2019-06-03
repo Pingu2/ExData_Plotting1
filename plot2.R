@@ -12,6 +12,8 @@ power<- read.table("household_power_consumption.txt", header = TRUE, sep = ";", 
 # merging date and time to create a single var
 DT<- paste(as.character(power$Date)  ," ", as.character(power$Time) )
 power$DateTime<- strptime(DT, format = "%d/%m/%Y %H:%M:%S")
+power$Time<- chron(times=power$Time)
+power$Date<- as.Date(power$Date ,"%d/%m/%Y")
 
 
 
